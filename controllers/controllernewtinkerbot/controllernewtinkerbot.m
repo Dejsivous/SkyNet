@@ -30,6 +30,10 @@ wb_motor_set_velocity(wheel_right_front, 1);
 wb_motor_set_position(wheel_right_back, inf);
 wb_motor_set_velocity(wheel_right_back, 1);
 
+%GPS Settings
+Period = 10
+wb_gps_enable('gps', Period);
+wb_gps_get_values('gps')
 % main loop:
 % perform simulation steps of TIME_STEP milliseconds
 % and leave the loop when Webots signals the termination

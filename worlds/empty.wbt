@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.03305321194997917 0.9778425609819303 0.2067157737379744 2.8018627949058437
-  position 0.22725655075971088 0.5024985689757533 -0.9179671409966217
+  orientation -0.15376901815608446 0.9537026795016257 0.25846912420390455 2.085692958976034
+  position 0.7971737874300656 0.6111134596597988 -0.45630518463201286
 }
 TexturedBackground {
 }
@@ -14,6 +14,7 @@ CircleArena {
 }
 TinkerbotsBase {
   translation 0 0.1 0
+  controller "1_controller_newtinkerbot"
   upSlot TinkerbotsDistanceSensor {
     translation 0 0.02 0.02
     rotation 1 0 0 1.5707996938995747

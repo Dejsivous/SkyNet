@@ -60,6 +60,7 @@ disp(x_y_z)
      wb_motor_set_velocity(wheel_right_back, 2);
      wb_motor_set_velocity(wheel_right_front, 2);
   end
+  
   % read the sensors, e.g.:
   %  rgb = wb_camera_get_image(camera);
 

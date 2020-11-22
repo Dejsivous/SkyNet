@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.27290751534267776 0.9318084704780425 0.2392790471705726 1.4841509979050782
-  position 0.38853342102893423 0.31276056207015523 0.08452247623950648
+  orientation -0.2319092412968662 0.9457772460886505 0.22742802066165865 1.579888099585712
+  position 2.0314866643428666 1.138716487830897 0.4252777666837688
 }
 TexturedBackground {
 }
@@ -13,11 +13,32 @@ TexturedBackgroundLight {
 CircleArena {
 }
 TinkerbotsBase {
+  hidden translation_21 0 -1.0507613910915037e-09 4.944759671166032e-10
+  hidden translation_23 -4.4800082046880796e-11 -2.586609572363674e-11 -2.4335575221634542e-11
   translation 0 0.09 0
   controller "controllernewtinkerbot"
   upSlot TinkerbotsDistanceSensor {
     translation 0 0.02 0.02
     rotation 1 0 0 1.5707996938995747
+    name "ds"
+  }
+  downSlot TinkerbotsCube {
+    frontSlot TinkerbotsTwister {
+      slot TinkerbotsCube {
+        frontSlot TinkerbotsPivot {
+          slot TinkerbotsPivot {
+            slot TinkerbotsGrabber {
+              fingerASlot TinkerbotsFinger {
+              }
+              fingerBSlot TinkerbotsFinger {
+              }
+              fingerCSlot TinkerbotsFinger {
+              }
+            }
+          }
+        }
+      }
+    }
   }
   leftSlot TinkerbotsCube {
     leftSlot TinkerbotsMotor {
@@ -56,6 +77,24 @@ TinkerbotsBase {
     }
   }
   extensionSlot [
+    Compass {
+      translation 0 0.1 -0.04
+      children [
+        Solid {
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Capsule {
+                height 0.01
+                radius 0.01
+              }
+            }
+          ]
+        }
+      ]
+      name "comp"
+    }
     GPS {
       children [
         Solid {

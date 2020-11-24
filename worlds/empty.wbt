@@ -3,12 +3,179 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.7498371425023898 0.6348140152007079 0.1864280714608355 0.7124110227681028
-  position 1.2 1.6 2.3
+  orientation -0.2461058868986739 0.8909119279998767 0.38171694877403545 2.0827955977324804
+  position 1.393202162625444 1.4941455048831478 -0.8124632245743796
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 CircleArena {
+}
+TinkerbotsBase {
+  hidden linearVelocity_0 -0.011388845818699686 8.43508460416402e-07 0.0779265645879392
+  hidden angularVelocity_0 0.00043202769415147185 5.309295206984776e-06 6.314088885406543e-05
+  hidden position_9_0 1.4440797881783252e-07
+  hidden rotation_11 0 0 -1 1.4292691717483762e-07
+  hidden linearVelocity_11 -0.011393361112306929 1.4355082521677306e-05 0.07795625175497714
+  hidden angularVelocity_11 0.0004320276974105162 3.865242565428143e-06 6.314146085959473e-05
+  hidden position_13_0 -4.949823484423632e-08
+  hidden translation_15 0 -9.899646968847262e-10 2.7755575615628914e-17
+  hidden rotation_15 -1 0 0 5.16191365590357e-08
+  hidden linearVelocity_15 -0.011393774793732865 -8.712370791863489e-06 0.07796049429499599
+  hidden angularVelocity_15 0.0004320276992653062 3.865241872083242e-06 6.314146112941673e-05
+  hidden position_16_0 -2.0852874094146046e-08
+  hidden translation_18 0 -4.170574818829209e-10 0
+  hidden linearVelocity_18 -0.011393589791871342 -3.0252182694661704e-05 0.0779605469933614
+  hidden angularVelocity_18 0.00043202770017155157 3.865241416196005e-06 6.314146125592492e-05
+  hidden position_19_0 5.150971756384417e-10
+  hidden position_19_1 -7.244214117463343e-10
+  hidden position_19_2 -7.244231881031737e-10
+  hidden translation_21 0 -3.3262265580757955e-09 1.5652835069768223e-09
+  hidden linearVelocity_21 -0.011392503327619534 -4.676166114780944e-05 0.0779541238530248
+  hidden angularVelocity_21 0.00043202770023207857 3.865241403004619e-06 6.314146127503482e-05
+  hidden translation_23 1.8722413896998802e-10 1.0809706255110463e-10 1.0170091158112626e-10
+  hidden linearVelocity_23 -0.01139392080151005 -4.6756346253840064e-05 0.07796382250563944
+  hidden angularVelocity_23 0.0004320251856540218 3.8696442359296346e-06 6.314108865624041e-05
+  hidden translation_25 -2.1441470821059738e-10 1.2379601857515077e-10 1.1647083991705998e-10
+  hidden linearVelocity_25 -0.011393935628014527 -4.6757296295329986e-05 0.07796392322131111
+  hidden angularVelocity_25 0.0004320251841011259 3.860838505489459e-06 6.314109902659107e-05
+  hidden position_28_0 -191.9322300077055
+  hidden translation_30 0.00581629225076885 0 0.03913558842715965
+  hidden rotation_30 0 1 0 3.4366707923179045
+  hidden linearVelocity_30 -0.011389042925758134 -4.812364311119441e-06 0.07792414486884236
+  hidden angularVelocity_30 2.968197371278098 -7.660136028240075e-06 0.4386641024227596
+  hidden position_33_0 -191.9322375174128
+  hidden translation_35 0.005816435953272986 0 0.03913554474796768
+  hidden rotation_35 0 1 0 3.436678302025207
+  hidden linearVelocity_35 -0.011388807431383463 4.819095999738653e-06 0.07792777891291951
+  hidden angularVelocity_35 2.9688914711869145 -7.448635337903067e-06 0.4339372045630467
+  hidden position_39_0 325.3502777727049
+  hidden translation_41 -0.019619253624117452 0 0.016116073219980275
+  hidden rotation_41 0 1 0 1.3753582006336116
+  hidden linearVelocity_41 -0.011391064997434428 -1.579037393030172e-05 0.0779472789886623
+  hidden angularVelocity_41 2.968892110858633 1.4249129365213862e-05 0.4339371559580907
+  hidden position_44_0 325.35028851718533
+  hidden translation_46 -0.019619211892209637 0 0.016115862421517493
+  hidden rotation_46 0 1 0 1.3753474561531633
+  hidden linearVelocity_46 -0.011386070590187631 1.5782475273183706e-05 0.07790438361646528
+  hidden angularVelocity_46 2.969578724126775 1.652872041338775e-05 0.4292086283035352
+  translation 0.35775259708617324 0.02611782579102582 -0.13283506305203205
+  rotation -0.0028784297425439222 0.9999958353050635 -0.00020979691449857067 -0.14513328268889847
+  controller "controllernewtinkerbot"
+  upSlot TinkerbotsDistanceSensor {
+    translation 0 0.02 0.02
+    rotation 1 0 0 1.5707996938995747
+    name "ds"
+  }
+  downSlot TinkerbotsCube {
+    frontSlot TinkerbotsTwister {
+      slot TinkerbotsCube {
+        frontSlot TinkerbotsPivot {
+          slot TinkerbotsPivot {
+            slot TinkerbotsGrabber {
+              fingerASlot TinkerbotsFinger {
+              }
+              fingerBSlot TinkerbotsFinger {
+              }
+              fingerCSlot TinkerbotsFinger {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  leftSlot TinkerbotsCube {
+    leftSlot TinkerbotsMotor {
+      rotation 0 0 1 1.5707996938995747
+      name "wheel_left_front"
+      frontSlot TinkerbotsAxle {
+        endSlot TinkerbotsWheel {
+        }
+      }
+    }
+    rightSlot TinkerbotsMotor {
+      rotation 0 0 1 -1.5708003061004252
+      name "wheel_left_back"
+      frontSlot TinkerbotsAxle {
+        endSlot TinkerbotsWheel {
+        }
+      }
+    }
+  }
+  rightSlot TinkerbotsCube {
+    leftSlot TinkerbotsMotor {
+      rotation 0 0 1 1.5707996938995747
+      name "wheel_right_front"
+      frontSlot TinkerbotsAxle {
+        endSlot TinkerbotsWheel {
+        }
+      }
+    }
+    rightSlot TinkerbotsMotor {
+      rotation 0 0 1 -1.5707996938995747
+      name "wheel_right_back"
+      frontSlot TinkerbotsAxle {
+        endSlot TinkerbotsWheel {
+        }
+      }
+    }
+  }
+  extensionSlot [
+    Compass {
+      translation 0 0.1 -0.04
+      children [
+        Solid {
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Capsule {
+                height 0.01
+                radius 0.01
+              }
+            }
+          ]
+        }
+      ]
+      name "comp"
+    }
+    GPS {
+      children [
+        Solid {
+          translation 0 0.01 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Cylinder {
+                height 0.03
+                radius 0.01
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+WoodenBox {
+  translation 0 0.05 0.77
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation -0.00818662 0.05 -0.846367
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.17 0.05 0.59
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation -0.1855 0.05 -0.667891
+  name "wooden box(3)"
+  size 0.1 0.1 0.1
 }

@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.10067510445422867 0.9761680358380885 0.19225110962264594 2.1645384788196855
-  position 0.7552800219468072 0.5330315472913593 -0.43852598372133644
+  orientation -0.3450714909156858 0.9100364553572202 0.22969396177978224 1.330347802724669
+  position 1.2281743688171893 0.725763746750033 0.4759353933327745
 }
 TexturedBackground {
 }
@@ -13,7 +13,9 @@ TexturedBackgroundLight {
 CircleArena {
 }
 TinkerbotsBase {
-  translation 0 0.09 0
+  hidden translation_25 0 -6.969462507111501e-11 3.279745919293475e-11
+  translation 6.002564919648508e-08 0.025045257781013935 -0.0010617419046245271
+  rotation -0.9999480237976685 -0.010195102832450271 9.788448924858683e-05 0.0002868142950807308
   controller "controllernewtinkerbot"
   upSlot TinkerbotsDistanceSensor {
     translation 0 0.02 0.02
@@ -75,6 +77,73 @@ TinkerbotsBase {
     }
   }
   extensionSlot [
+    DistanceSensor {
+      translation 0.04 0 0.06
+      rotation 0 1 0 -2.094399693899575
+      children [
+        Solid {
+          children [
+            DEF sensor Shape {
+              appearance PBRAppearance {
+              }
+              geometry Box {
+                size 0.01 0.01 0.01
+              }
+            }
+          ]
+          boundingObject Box {
+            size 0.1 0.1 0.1
+          }
+        }
+      ]
+      name "distance_left"
+      boundingObject USE sensor
+      lookupTable [
+        0 0 0
+        0.2 100 0
+      ]
+    }
+    DistanceSensor {
+      translation -0.04 0 0.06
+      rotation 0 1 0 -1.0472003061004251
+      children [
+        Solid {
+          children [
+            DEF sensor Shape {
+              appearance PBRAppearance {
+              }
+              geometry Box {
+                size 0.01 0.01 0.01
+              }
+            }
+          ]
+        }
+      ]
+      name "distance_right"
+      boundingObject USE sensor
+      lookupTable [
+        0 0 0
+        0.2 100 0
+      ]
+    }
+    Compass {
+      translation 0 0.1 -0.04
+      children [
+        Solid {
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Capsule {
+                height 0.01
+                radius 0.01
+              }
+            }
+          ]
+        }
+      ]
+      name "comp"
+    }
     GPS {
       children [
         Solid {

@@ -61,7 +61,8 @@ brain = 0;
 while wb_robot_step(TIME_STEP) ~= -1
     ds_r = wb_distance_sensor_get_value(ds_right);
     ds_l = wb_distance_sensor_get_value(ds_left);
-    disp(ds_l)
+    disp(ds_l);
+    disp(
   
 x_y_z = wb_gps_get_values(GPS);
 % disp(x_y_z);
@@ -98,7 +99,7 @@ end
 % mozek
 switch brain
     case 0
-            if ds_r <= distance | ds_l <= distance
+            if distance_right <= distance | distance_left <= distance
                 brain = 1
             else
             wb_motor_set_velocity(wheel_left_back, -speed);
@@ -123,7 +124,7 @@ switch brain
                      wb_motor_set_velocity(wheel_right_back, 0.5);
                      wb_motor_set_velocity(wheel_right_front, 0.5);              
                     if W == 1
-                        if ds_r <= distance | ds_l <= distance
+                        if distance_right <= distance | distance_left <= distance
                             brain = 3
                         else
                             brain = 0
@@ -141,7 +142,7 @@ switch brain
             wb_motor_set_velocity(wheel_right_back, -0.5);
             wb_motor_set_velocity(wheel_right_front, -0.5);
             if E == 1
-                if ds_r <= distance | ds_l <= distance
+                if distance_right <= distance | distance_left <= distance
                     brain = 4
                 else
                     brain = 0
@@ -173,7 +174,7 @@ switch brain
                  wb_motor_set_velocity(wheel_right_back, 0.5);
                  wb_motor_set_velocity(wheel_right_front, 0.5);              
                 if N == 1
-                    if ds_r <= distance | ds_l <= distance
+                    if distance_right <= distance | distance_left <= distance
                         brain = 6
                     else 
                         brain = 0
@@ -191,7 +192,7 @@ switch brain
             wb_motor_set_velocity(wheel_right_back, -0.5);
             wb_motor_set_velocity(wheel_right_front, -0.5);
                 if S == 1
-                    if ds_r <= distance | ds_l <= distance
+                    if distance_right <= distance | distance_left <= distance
                         brain = 7
                     else
                         brain = 0

@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.39116266353319495 0.8950460517726715 0.2142062927735055 1.169485200064687
-  position 0.9296258221168746 0.46817207481857065 0.4915593128664826
+  orientation -0.33809711001594545 0.9223116491241438 0.18716721424642713 1.1621312272953939
+  position 0.875191146689581 0.3698117313777505 0.4555124105524506
 }
 TexturedBackground {
 }
@@ -16,11 +16,6 @@ TinkerbotsBase {
   translation 6.002564919648508e-08 0.025045257781013935 -0.0010617419046245271
   rotation -0.9999480237976685 -0.010195102832450271 9.788448924858683e-05 0.0002868142950807308
   controller "controllernewtinkerbot"
-  upSlot TinkerbotsDistanceSensor {
-    translation 0 0.02 0.02
-    rotation 1 0 0 1.5707996938995747
-    name "ds"
-  }
   downSlot TinkerbotsCube {
     frontSlot TinkerbotsTwister {
       slot TinkerbotsCube {
@@ -104,7 +99,7 @@ TinkerbotsBase {
     }
     DistanceSensor {
       translation -0.04 0 0.06
-      rotation 0 1 0 -1.0472003061004251
+      rotation 0 -1 0 1.0472
       children [
         Solid {
           children [

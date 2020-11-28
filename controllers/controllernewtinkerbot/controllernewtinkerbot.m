@@ -18,6 +18,19 @@ TIME_STEP = 64;
 %  motor = wb_robot_get_device('motor');
 speed = 3;
 distance = 90;
+
+twister_1 = wb_robot_get_device('twister');
+wb_motor_set_position(twister_1, 10);
+wb_motor_set_velocity(twister_1, 1);
+
+%pivot_1 = wb_robot_get_device('pivot_1');
+%wb_motor_set_position(pivot_1, -1);
+%wb_motor_set_velocity(pivot_1, 1);
+
+pivot_2 = wb_robot_get_device('pivot_2');
+wb_motor_set_position(pivot_2, -1);
+wb_motor_set_velocity(pivot_2, 1);
+
 wheel_left_front = wb_robot_get_device('wheel_left_front');
 wheel_left_back = wb_robot_get_device('wheel_left_back');
 wheel_right_front = wb_robot_get_device('wheel_right_front');

@@ -4,7 +4,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation -0.33809711001594545 0.9223116491241438 0.18716721424642713 1.1621312272953939
-  position 0.875191146689581 0.3698117313777505 0.4555124105524506
+  position 0.8464481004252119 0.47714310582358976 0.4510310888989594
 }
 TexturedBackground {
 }
@@ -20,7 +20,9 @@ TinkerbotsBase {
     frontSlot TinkerbotsTwister {
       slot TinkerbotsCube {
         frontSlot TinkerbotsPivot {
+          name "pivot_1"
           slot TinkerbotsPivot {
+            name "pivot_2"
             slot TinkerbotsGrabber {
               fingerASlot TinkerbotsFinger {
               }

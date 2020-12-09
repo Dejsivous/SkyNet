@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.22130095107275852 0.9459146545723655 0.23721584120697964 1.6695480254661423
-  position 2.0450643885062565 1.1487092150287226 0.0637609517524014
+  orientation -0.6712709156905616 0.6883630147029276 0.27486672722803723 1.1294162153853786
+  position 1.0307040378739445 1.7055473366151812 0.818539227019829
 }
 TexturedBackground {
 }
@@ -13,18 +13,19 @@ TexturedBackgroundLight {
 CircleArena {
 }
 TinkerbotsBase {
-  translation 0 0.09 0
+  hidden translation_22 0 -5.755508118709951e-10 2.7084743475791484e-10
+  hidden translation_24 -1.7206806465774882e-10 -9.934645467390979e-11 -9.346808743648793e-11
+  hidden translation_26 5.18532074916811e-11 -2.993834000153406e-11 -2.8166857735101303e-11
+  translation 1.7699e-07 0.0250337 -0.0410617
+  rotation -0.9999480237976685 -0.010195102832450271 9.788448924858683e-05 0.0002868142950807308
   controller "controllernewtinkerbot"
-  upSlot TinkerbotsDistanceSensor {
-    translation 0 0.02 0.02
-    rotation 1 0 0 1.5707996938995747
-    name "ds"
-  }
   downSlot TinkerbotsCube {
     frontSlot TinkerbotsTwister {
       slot TinkerbotsCube {
         frontSlot TinkerbotsPivot {
+          name "pivot_1"
           slot TinkerbotsPivot {
+            name "pivot_2"
             slot TinkerbotsGrabber {
               fingerASlot TinkerbotsFinger {
               }
@@ -75,6 +76,55 @@ TinkerbotsBase {
     }
   }
   extensionSlot [
+    DistanceSensor {
+      translation 0.04 0 0.06
+      rotation 0 1 0 -2.094399693899575
+      children [
+        Solid {
+          children [
+            DEF sensor Shape {
+              appearance PBRAppearance {
+              }
+              geometry Box {
+                size 0.01 0.01 0.01
+              }
+            }
+          ]
+          boundingObject Box {
+            size 0.1 0.1 0.1
+          }
+        }
+      ]
+      name "distance_left"
+      boundingObject USE sensor
+      lookupTable [
+        0 0 0
+        0.2 100 0
+      ]
+    }
+    DistanceSensor {
+      translation -0.04 0 0.06
+      rotation 0 -1 0 1.0472
+      children [
+        Solid {
+          children [
+            DEF sensor Shape {
+              appearance PBRAppearance {
+              }
+              geometry Box {
+                size 0.01 0.01 0.01
+              }
+            }
+          ]
+        }
+      ]
+      name "distance_right"
+      boundingObject USE sensor
+      lookupTable [
+        0 0 0
+        0.2 100 0
+      ]
+    }
     Compass {
       translation 0 0.1 -0.04
       children [
@@ -109,6 +159,18 @@ TinkerbotsBase {
           ]
         }
       ]
+    }
+  ]
+}
+Solid {
+  translation -0.6 0.0001 -0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Plane {
+        size 0.2 0.2
+      }
     }
   ]
 }

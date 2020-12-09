@@ -37,13 +37,9 @@ wheel_right_front = wb_robot_get_device('wheel_right_front');
 wheel_right_back = wb_robot_get_device('wheel_right_back');
 
 wb_motor_set_position(wheel_left_front, inf);
-wb_motor_set_velocity(wheel_left_front, -speed);
 wb_motor_set_position(wheel_left_back, inf);
-wb_motor_set_velocity(wheel_left_back, -speed);
 wb_motor_set_position(wheel_right_front, inf);
-wb_motor_set_velocity(wheel_right_front, speed);
 wb_motor_set_position(wheel_right_back, inf);
-wb_motor_set_velocity(wheel_right_back, speed);
 
 %Distance sensor settings
 ds_right = wb_robot_get_device('distance_right');
@@ -63,21 +59,21 @@ wb_compass_enable(Compass, TIME_STEP);
 % main loop:
 % perform simulation steps of TIME_STEP milliseconds
 % and leave the loop when Webots signals the termination
-
+%Finish position
+X1 = -0.75;
+Z1 = -0.01;
+%Sites
 N = 0;
 S = 0;
 E = 0;
 W = 0;
 site = 0;
-brain = 0;
-
+brain = 8;
+position = 0;
 while wb_robot_step(TIME_STEP) ~= -1
     ds_r = wb_distance_sensor_get_value(ds_right);
     ds_l = wb_distance_sensor_get_value(ds_left);
     %disp(ds_l);
-
-x_y_z = wb_gps_get_values(GPS);
-% disp(x_y_z);
 
 Site = wb_compass_get_values(Compass);
 A = Site(1);
@@ -85,25 +81,25 @@ B = Site(3);
 
 %definice_sv._stran
 %definice_severu
-if A > 0.979 & B < 0.021
+if A > 0.985 & B > -0
     N = 1;
 else
     N = 0;
 end
 %definice_jihu
-if A < -0.979 & B < 0.021
+if A < -0.98 & B > -0.015
     S = 1;
 else
     S = 0;
 end
 %definice_vychodu
-if A < 0.021 & B < -0.979
+if A < 0.015 & B < -0.985
     E = 1;
 else
     E = 0;
 end
 %definice_zapadu
-if A < 0.021 & B > 0.979    
+if A < 0.011 & B > 0.979    
     W = 1;
 else
     W = 0;
@@ -226,7 +222,86 @@ switch brain
                         brain = 0
                     end
             end
+    case 8
+            wb_motor_set_velocity(wheel_left_back, 0);
+            wb_motor_set_velocity(wheel_left_front, 0);
+            wb_motor_set_velocity(wheel_right_back, 0);
+            wb_motor_set_velocity(wheel_right_front, 0); 
+
 end
+
+  %GPS navigate
+  
+x_y_z = wb_gps_get_values(GPS);
+%disp(x_y_z)
+
+X = x_y_z(1)
+Z = x_y_z(3)
+% %Finish position X
+% if X1 - X <= 0.005 & X1 - X >= -0.005
+%    brain = 8
+%    position = 2
+% end
+% %Finish position Z
+% if Z1 - Z <= 0.005 & Z1 - Z >= -0.005
+%    brain = 8
+%    position = 1
+% end
+% %Finish position
+% 
+% if Z1 - Z <= 0.005 & Z1 - Z >= -0.005 & X1 - X <= 0.005 & X1 - X >= -0.005
+%    brain = 8
+% end
+
+switch position
+    case 0
+%Finish position X
+if X1 - X <= 0.005 & X1 - X >= -0.005
+   brain = 8;
+   position = 2;
+end
+%Finish position Z
+if Z1 - Z <= 0.005 & Z1 - Z >= -0.005
+   brain = 8;
+   position = 1;
+end
+%Finish position
+
+if Z1 - Z <= 0.05 & Z1 - Z >= -0.05 & X1 - X <= 0.05 & X1 - X >= -0.05
+   brain = 8;
+end        
+    case 1
+        wb_motor_set_velocity(wheel_left_back, -1);
+        wb_motor_set_velocity(wheel_left_front, -1);
+        wb_motor_set_velocity(wheel_right_back, -1);
+        wb_motor_set_velocity(wheel_right_front, -1);  
+        if B < -0.8
+            wb_motor_set_velocity(wheel_left_back, -0.5);
+            wb_motor_set_velocity(wheel_left_front, -0.5);
+            wb_motor_set_velocity(wheel_right_back, -0.5);
+            wb_motor_set_velocity(wheel_right_front, -0.5);
+            if E == 1
+                brain = 0
+                position = 0
+            end
+        end  
+    case 2
+        wb_motor_set_velocity(wheel_left_back, 1);
+        wb_motor_set_velocity(wheel_left_front, 1);
+        wb_motor_set_velocity(wheel_right_back, 1);
+        wb_motor_set_velocity(wheel_right_front, 1);  
+        if A < -0.8
+            wb_motor_set_velocity(wheel_left_back, 0.5);
+            wb_motor_set_velocity(wheel_left_front, 0.5);
+            wb_motor_set_velocity(wheel_right_back, 0.5);
+            wb_motor_set_velocity(wheel_right_front, 0.5);
+                if S == 1
+                    brain = 0
+                    position = 0
+                end
+        end
+end
+
   % read the sensors, e.g.:
   %  rgb = wb_camera_get_image(camera);
 

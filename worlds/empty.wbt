@@ -3,8 +3,32 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.6712709156905616 0.6883630147029276 0.27486672722803723 1.1294162153853786
-  position 1.0232598915551239 1.6082612692186202 0.9746338060893249
+  orientation -0.5876568614569339 0.6127215773664391 0.5284237710513874 1.9755938596640528
+  position 0.46632379747797303 2.7096640066192585 -0.0506709036972367
+}
+WoodenBox {
+  translation -0.51 0.08 -0.71
+  name "wooden box(4)"
+  size 0.15 0.15 0.15
+}
+WoodenBox {
+  translation 0.24 0.08 0.37
+  name "wooden box(3)"
+  size 0.15 0.15 0.15
+}
+WoodenBox {
+  translation 0.26 0.08 -0.52
+  name "wooden box(2)"
+  size 0.15 0.15 0.15
+}
+WoodenBox {
+  translation 0.42 0.08 -0.21
+  name "wooden box(1)"
+  size 0.15 0.15 0.15
+}
+WoodenBox {
+  translation 0 0.08 0.6
+  size 0.15 0.15 0.15
 }
 TexturedBackground {
 }
@@ -13,7 +37,7 @@ TexturedBackgroundLight {
 CircleArena {
 }
 TinkerbotsBase {
-  translation 1.7699e-07 0.0250337 -0.0410617
+  translation 3.07847e-08 0.0250482 0.0089383
   rotation -0.9999480237976685 -0.010195102832450271 9.788448924858683e-05 0.0002868142950807308
   controller "controllernewtinkerbot"
   downSlot TinkerbotsCube {
@@ -160,7 +184,7 @@ TinkerbotsBase {
   ]
 }
 Solid {
-  translation -0.6 0.0001 -0.3
+  translation -0.75 0.0001 -0.01
   children [
     Shape {
       appearance PBRAppearance {

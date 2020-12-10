@@ -37,13 +37,9 @@ wheel_right_front = wb_robot_get_device('wheel_right_front');
 wheel_right_back = wb_robot_get_device('wheel_right_back');
 
 wb_motor_set_position(wheel_left_front, inf);
-wb_motor_set_velocity(wheel_left_front, -speed);
 wb_motor_set_position(wheel_left_back, inf);
-wb_motor_set_velocity(wheel_left_back, -speed);
 wb_motor_set_position(wheel_right_front, inf);
-wb_motor_set_velocity(wheel_right_front, speed);
 wb_motor_set_position(wheel_right_back, inf);
-wb_motor_set_velocity(wheel_right_back, speed);
 
 %Distance sensor settings
 ds_right = wb_robot_get_device('distance_right');
@@ -64,8 +60,8 @@ wb_compass_enable(Compass, TIME_STEP);
 % perform simulation steps of TIME_STEP milliseconds
 % and leave the loop when Webots signals the termination
 %Finish position
-X1 = -0.6;
-Z1 = -0.3;
+X1 = -0.75;
+Z1 = -0.01;
 %Sites
 N = 0;
 S = 0;
@@ -130,11 +126,11 @@ switch brain
         wb_motor_set_velocity(wheel_left_front, 1);
         wb_motor_set_velocity(wheel_right_back, 1);
         wb_motor_set_velocity(wheel_right_front, 1);  
-                if A < 0.2
-                     wb_motor_set_velocity(wheel_left_back, 0.5);
-                     wb_motor_set_velocity(wheel_left_front, 0.5);
-                     wb_motor_set_velocity(wheel_right_back, 0.5);
-                     wb_motor_set_velocity(wheel_right_front, 0.5);              
+                if A < 0.1
+                     wb_motor_set_velocity(wheel_left_back, 0.05);
+                     wb_motor_set_velocity(wheel_left_front, 0.05);
+                     wb_motor_set_velocity(wheel_right_back, 0.05);
+                     wb_motor_set_velocity(wheel_right_front, 0.05);              
                     if W == 1
                         if ds_r <= distance | ds_l <= distance
                             brain = 3
@@ -148,11 +144,11 @@ switch brain
         wb_motor_set_velocity(wheel_left_front, -1);
         wb_motor_set_velocity(wheel_right_back, -1);
         wb_motor_set_velocity(wheel_right_front, -1);  
-        if B < -0.8
-            wb_motor_set_velocity(wheel_left_back, -0.5);
-            wb_motor_set_velocity(wheel_left_front, -0.5);
-            wb_motor_set_velocity(wheel_right_back, -0.5);
-            wb_motor_set_velocity(wheel_right_front, -0.5);
+        if B < -0.95 & A < 0.1
+            wb_motor_set_velocity(wheel_left_back, -0.05);
+            wb_motor_set_velocity(wheel_left_front, -0.05);
+            wb_motor_set_velocity(wheel_right_back, -0.05);
+            wb_motor_set_velocity(wheel_right_front, -0.05);
             if E == 1
                 if ds_r <= distance | ds_l <= distance
                     brain = 4
@@ -166,11 +162,11 @@ switch brain
         wb_motor_set_velocity(wheel_left_front, -1);
         wb_motor_set_velocity(wheel_right_back, -1);
         wb_motor_set_velocity(wheel_right_front, -1);  
-        if A < -0.8
-            wb_motor_set_velocity(wheel_left_back, -0.5);
-            wb_motor_set_velocity(wheel_left_front, -0.5);
-            wb_motor_set_velocity(wheel_right_back, -0.5);
-            wb_motor_set_velocity(wheel_right_front, -0.5);
+        if A < -0.95 & B < 0.1
+            wb_motor_set_velocity(wheel_left_back, -0.05);
+            wb_motor_set_velocity(wheel_left_front, -0.05);
+            wb_motor_set_velocity(wheel_right_back, -0.05);
+            wb_motor_set_velocity(wheel_right_front, -0.05);
                 if S == 1
                     brain = 0
                 end
@@ -180,11 +176,11 @@ switch brain
             wb_motor_set_velocity(wheel_left_front, 1);
             wb_motor_set_velocity(wheel_right_back, 1);
             wb_motor_set_velocity(wheel_right_front, 1);  
-            if A > 0.8
-                 wb_motor_set_velocity(wheel_left_back, 0.5);
-                 wb_motor_set_velocity(wheel_left_front, 0.5);
-                 wb_motor_set_velocity(wheel_right_back, 0.5);
-                 wb_motor_set_velocity(wheel_right_front, 0.5);              
+            if A > 0.95 & B < 0.1
+                 wb_motor_set_velocity(wheel_left_back, 0.05);
+                 wb_motor_set_velocity(wheel_left_front, 0.05);
+                 wb_motor_set_velocity(wheel_right_back, 0.05);
+                 wb_motor_set_velocity(wheel_right_front, 0.05);              
                 if N == 1
                     if ds_r <= distance | ds_l <= distance
                         brain = 6
@@ -198,11 +194,11 @@ switch brain
         wb_motor_set_velocity(wheel_left_front, -1);
         wb_motor_set_velocity(wheel_right_back, -1);
         wb_motor_set_velocity(wheel_right_front, -1);  
-        if A < -0.8
-            wb_motor_set_velocity(wheel_left_back, -0.5);
-            wb_motor_set_velocity(wheel_left_front, -0.5);
-            wb_motor_set_velocity(wheel_right_back, -0.5);
-            wb_motor_set_velocity(wheel_right_front, -0.5);
+        if A < -0.95 & B < 0.1
+            wb_motor_set_velocity(wheel_left_back, -0.05);
+            wb_motor_set_velocity(wheel_left_front, -0.05);
+            wb_motor_set_velocity(wheel_right_back, -0.05);
+            wb_motor_set_velocity(wheel_right_front, -0.05);
                 if S == 1
                     if ds_r <= distance | ds_l <= distance
                         brain = 7
@@ -217,11 +213,11 @@ switch brain
         wb_motor_set_velocity(wheel_left_front, -1);
         wb_motor_set_velocity(wheel_right_back, -1);
         wb_motor_set_velocity(wheel_right_front, -1);  
-            if A > -0.2
-                wb_motor_set_velocity(wheel_left_back, -0.5);
-                wb_motor_set_velocity(wheel_left_front, -0.5);
-                wb_motor_set_velocity(wheel_right_back, -0.5);
-                wb_motor_set_velocity(wheel_right_front, -0.5);
+            if A > -0.1 & B < 0.95
+                wb_motor_set_velocity(wheel_left_back, -0.05);
+                wb_motor_set_velocity(wheel_left_front, -0.05);
+                wb_motor_set_velocity(wheel_right_back, -0.05);
+                wb_motor_set_velocity(wheel_right_front, -0.05);
                     if W == 1
                         brain = 0
                     end
@@ -271,7 +267,7 @@ if Z1 - Z <= 0.005 & Z1 - Z >= -0.005
 end
 %Finish position
 
-if Z1 - Z <= 0.03 & Z1 - Z >= -0.03 & X1 - X <= 0.03 & X1 - X >= -0.03
+if Z1 - Z <= 0.05 & Z1 - Z >= -0.05 & X1 - X <= 0.05 & X1 - X >= -0.05
    brain = 8;
 end        
     case 1
@@ -279,11 +275,11 @@ end
         wb_motor_set_velocity(wheel_left_front, -1);
         wb_motor_set_velocity(wheel_right_back, -1);
         wb_motor_set_velocity(wheel_right_front, -1);  
-        if B < -0.8
-            wb_motor_set_velocity(wheel_left_back, -0.5);
-            wb_motor_set_velocity(wheel_left_front, -0.5);
-            wb_motor_set_velocity(wheel_right_back, -0.5);
-            wb_motor_set_velocity(wheel_right_front, -0.5);
+        if B < -0.95 & A < 0.1
+            wb_motor_set_velocity(wheel_left_back, -0.05);
+            wb_motor_set_velocity(wheel_left_front, -0.05);
+            wb_motor_set_velocity(wheel_right_back, -0.05);
+            wb_motor_set_velocity(wheel_right_front, -0.05);
             if E == 1
                 brain = 0
                 position = 0
@@ -294,11 +290,11 @@ end
         wb_motor_set_velocity(wheel_left_front, 1);
         wb_motor_set_velocity(wheel_right_back, 1);
         wb_motor_set_velocity(wheel_right_front, 1);  
-        if A < -0.8
-            wb_motor_set_velocity(wheel_left_back, 0.5);
-            wb_motor_set_velocity(wheel_left_front, 0.5);
-            wb_motor_set_velocity(wheel_right_back, 0.5);
-            wb_motor_set_velocity(wheel_right_front, 0.5);
+        if A < -0.95 & B < 0.1
+            wb_motor_set_velocity(wheel_left_back, 0.05);
+            wb_motor_set_velocity(wheel_left_front, 0.05);
+            wb_motor_set_velocity(wheel_right_back, 0.05);
+            wb_motor_set_velocity(wheel_right_front, 0.05);
                 if S == 1
                     brain = 0
                     position = 0

@@ -1,8 +1,8 @@
 % MATLAB controller for Webots
 % File:          my_controller.m
-% Date:
+% Date: 16.12. 2020
 % Description:
-% Author:
+% Author: Kallus Petr, Hopjan David
 % Modifications:
 
 % uncomment the next two lines if you want to use
@@ -12,40 +12,29 @@
 
 TIME_STEP = 64;
 
-
-% get and enable devices, e.g.:
-%  camera = wb_robot_get_device('camera');
-%  wb_camera_enable(camera, TIME_STEP);
-%  motor = wb_robot_get_device('motor');
 speed = 3;
 distance = 90;
+%manipulator 3000
 finger_a = wb_robot_get_device('grabber finger A');
-wb_motor_set_velocity(finger_a, 4);
+wb_motor_set_velocity(finger_a, 2);
 finger_b = wb_robot_get_device('grabber finger B');
-wb_motor_set_velocity(finger_b, 4);
+wb_motor_set_velocity(finger_b, 2);
 
 finger_c = wb_robot_get_device('grabber finger C');
-wb_motor_set_velocity(finger_c, 1);
-
-wb_motor_set_position(finger_a, 1);
-wb_motor_set_position(finger_b, 1);
-wb_motor_set_position(finger_c, 1);
+wb_motor_set_velocity(finger_c, 2);
 
 twister_1 = wb_robot_get_device('twister');
-wb_motor_set_position(twister_1, 10);
+
 wb_motor_set_velocity(twister_1, 1);
 
-
 pivot_1 = wb_robot_get_device('pivot_1');
-%wb_motor_set_position(pivot_1, -1);
-%wb_motor_set_velocity(pivot_1, 1);
+
 pivot_2 = wb_robot_get_device('pivot_2');
 wb_motor_set_velocity(pivot_2, 1);
 
 pivot_3 = wb_robot_get_device('pivot_3');
-wb_motor_set_position(pivot_3, -1.5);
 wb_motor_set_velocity(pivot_3, 1);
-
+%podvozek
 wheel_left_front = wb_robot_get_device('wheel_left_front');
 wheel_left_back = wb_robot_get_device('wheel_left_back');
 wheel_right_front = wb_robot_get_device('wheel_right_front');
@@ -95,26 +84,42 @@ while wb_robot_step(TIME_STEP) ~= -1
 ds_m = wb_distance_sensor_get_value(ds_manipulator);
 ds_r = wb_distance_sensor_get_value(ds_right);
 ds_l = wb_distance_sensor_get_value(ds_left);
-    %disp(ds_l);
+    disp(ds_m)
+    %ovladani manipulatoru na pomerance
 switch pick_up
-case 0
-if ds_m < 900 
-brain = 8
-wb_motor_set_position(finger_a, 0);
-wb_motor_set_position(finger_b, 0);
-wb_motor_set_position(finger_c, 0);
-
-wb_motor_set_position(pivot_3, 1.5);
-wb_motor_set_position(pivot_2, 1.5);
-
-wb_motor_set_velocity(pivot_2, 0.1);
-wb_motor_set_velocity(pivot_3, 0.1);
-pick_up = 1
-end
-case 1
-brain = 0
-end
-
+  case 0
+      brain = 0
+      wb_motor_set_position(finger_a, 1);
+      wb_motor_set_position(finger_b, 1);
+      wb_motor_set_position(finger_c, 1);
+      wb_motor_set_position(twister_1, 10);
+      wb_motor_set_position(pivot_3, -1.5);
+      pick_up = 1
+  case 1
+    if ds_m <= 60    
+            brain = 8
+            wb_motor_set_position(finger_a, 0);
+            wb_motor_set_position(finger_b, 0);
+            wb_motor_set_position(finger_c, 0);
+            
+            wb_motor_set_position(pivot_3, 1.5);
+            wb_motor_set_position(pivot_2, 1.5);
+            
+            wb_motor_set_velocity(pivot_2, 0.1);
+            wb_motor_set_velocity(pivot_3, 0.1);
+            pick_up = 2
+     end
+  case 2
+    if ds_m >= 60
+      pick_up = 3
+    end
+  case 3
+    pick_up = 4
+    brain = 0
+  case 4
+    wb_motor_set_position(twister_1, 0);
+  end
+  
 Site = wb_compass_get_values(Compass);
 A = Site(1);
 B = Site(3);
@@ -277,21 +282,6 @@ x_y_z = wb_gps_get_values(GPS);
 
 X = x_y_z(1);
 Z = x_y_z(3);
-% %Finish position X
-% if X1 - X <= 0.005 & X1 - X >= -0.005
-%    brain = 8
-%    position = 2
-% end
-% %Finish position Z
-% if Z1 - Z <= 0.005 & Z1 - Z >= -0.005
-%    brain = 8
-%    position = 1
-% end
-% %Finish position
-% 
-% if Z1 - Z <= 0.005 & Z1 - Z >= -0.005 & X1 - X <= 0.005 & X1 - X >= -0.005
-%    brain = 8
-% end
 
 switch position
     case 0
@@ -305,7 +295,7 @@ if Z1 - Z <= 0.005 & Z1 - Z >= -0.005
    brain = 8;
    position = 1;
 end
-%Finish position
+%Finish position 
 
 if Z1 - Z <= 0.05 & Z1 - Z >= -0.05 & X1 - X <= 0.05 & X1 - X >= -0.05
    brain = 8;

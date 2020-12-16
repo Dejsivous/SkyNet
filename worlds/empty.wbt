@@ -41,7 +41,7 @@ WoodenBox {
   size 0.15 0.15 0.15
 }
 WoodenBox {
-  translation 0.53 0.08 0.25
+  translation 0.53 0.08 0.19
   name "wooden box(9)"
   size 0.15 0.15 0.15
 }

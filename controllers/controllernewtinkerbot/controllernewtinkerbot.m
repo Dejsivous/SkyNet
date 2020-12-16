@@ -12,6 +12,7 @@
 
 TIME_STEP = 64;
 
+
 % get and enable devices, e.g.:
 %  camera = wb_robot_get_device('camera');
 %  wb_camera_enable(camera, TIME_STEP);
@@ -83,7 +84,7 @@ S = 0;
 E = 0;
 W = 0;
 site = 0;
-brain = 8;
+brain = 0;
 position = 0;
 while wb_robot_step(TIME_STEP) ~= -1
 

@@ -64,8 +64,7 @@ Compass = wb_robot_get_device('comp');
 wb_compass_enable(Compass, TIME_STEP);
 
 % main loop:
-% perform simulation steps of TIME_STEP milliseconds
-% and leave the loop when Webots signals the termination
+
 %Finish position
 X1 = -0.75;
 Z1 = -0.01;

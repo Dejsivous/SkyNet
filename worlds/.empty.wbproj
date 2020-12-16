@@ -4,7 +4,9 @@ simulationViewPerspectives: 000000ff00000001000000020000017f000003f2010000000601
 sceneTreePerspectives: 000000ff0000000100000002000000c0000000fc0100000006010000000200
 maximizedDockId: -1
 centralWidgetVisible: 1
+projectionMode: PERSPECTIVE
+renderingMode: PLAIN
 orthographicViewHeight: 1
-textFiles: 0 "controllernewtinkerbot.m"
+textFiles: 0 "controllers/controllernewtinkerbot/controllernewtinkerbot.m"
 globalOptionalRendering: DistanceSensorRays
 consoles: Console:All:All

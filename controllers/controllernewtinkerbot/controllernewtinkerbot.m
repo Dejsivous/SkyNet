@@ -19,15 +19,13 @@ TIME_STEP = 64;
 %  motor = wb_robot_get_device('motor');
 speed = 3;
 distance = 90;
-
 finger_a = wb_robot_get_device('grabber finger A');
-wb_motor_set_velocity(finger_a, 2);
-
+wb_motor_set_velocity(finger_a, 4);
 finger_b = wb_robot_get_device('grabber finger B');
-wb_motor_set_velocity(finger_b, 2);
+wb_motor_set_velocity(finger_b, 4);
 
 finger_c = wb_robot_get_device('grabber finger C');
-wb_motor_set_velocity(finger_c, 2);
+wb_motor_set_velocity(finger_c, 1);
 
 wb_motor_set_position(finger_a, 1);
 wb_motor_set_position(finger_b, 1);
@@ -41,6 +39,8 @@ wb_motor_set_velocity(twister_1, 1);
 pivot_1 = wb_robot_get_device('pivot_1');
 %wb_motor_set_position(pivot_1, -1);
 %wb_motor_set_velocity(pivot_1, 1);
+pivot_2 = wb_robot_get_device('pivot_2');
+wb_motor_set_velocity(pivot_2, 1);
 
 pivot_3 = wb_robot_get_device('pivot_3');
 wb_motor_set_position(pivot_3, -1.5);
@@ -63,6 +63,10 @@ wb_distance_sensor_enable(ds_right, TIME_STEP);
 ds_left = wb_robot_get_device('distance_left');
 wb_distance_sensor_enable(ds_left, TIME_STEP);
 
+
+ds_manipulator = wb_robot_get_device('distance sensor_manipulator');
+wb_distance_sensor_enable(ds_manipulator, TIME_STEP);
+
 %GPS Settings
 GPS = wb_robot_get_device('gps');
 wb_gps_enable(GPS,TIME_STEP);
@@ -78,7 +82,7 @@ wb_compass_enable(Compass, TIME_STEP);
 X1 = -0.75;
 Z1 = -0.01;
 %Sites
-
+pick_up = 0
 N = 0;
 S = 0;
 E = 0;
@@ -88,9 +92,28 @@ brain = 0;
 position = 0;
 while wb_robot_step(TIME_STEP) ~= -1
 
+ds_m = wb_distance_sensor_get_value(ds_manipulator);
 ds_r = wb_distance_sensor_get_value(ds_right);
-    ds_l = wb_distance_sensor_get_value(ds_left);
+ds_l = wb_distance_sensor_get_value(ds_left);
     %disp(ds_l);
+switch pick_up
+case 0
+if ds_m < 900 
+brain = 8
+wb_motor_set_position(finger_a, 0);
+wb_motor_set_position(finger_b, 0);
+wb_motor_set_position(finger_c, 0);
+
+wb_motor_set_position(pivot_3, 1.5);
+wb_motor_set_position(pivot_2, 1.5);
+
+wb_motor_set_velocity(pivot_2, 0.1);
+wb_motor_set_velocity(pivot_3, 0.1);
+pick_up = 1
+end
+case 1
+brain = 0
+end
 
 Site = wb_compass_get_values(Compass);
 A = Site(1);

@@ -3,8 +3,14 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.23765617340595738 -0.947118182374611 -0.2156077268036803 1.449555309602912
-  position -0.94978557417614 0.42668879919205227 0.23619117492868683
+  orientation -0.07918042646984494 -0.9805112340792365 -0.17980038906650336 2.234541324259556
+  position -0.524222839147564 0.2394869883888538 -0.17098029010253638
+}
+WoodenBox {
+  translation -0.125 0.008 -0.11
+  name "wooden box(3)"
+  size 0.02 0.01 0.02
+  mass 0.01
 }
 WoodenBox {
   translation -0.51 0.08 -0.71
@@ -12,7 +18,7 @@ WoodenBox {
   size 0.15 0.15 0.15
 }
 DEF OBJECT Solid {
-  translation -0.135 0.026 -0.029
+  translation -0.125 0.026 0.201
   rotation -1 0 0 4.712388985179587
   children [
     Shape {
@@ -65,7 +71,7 @@ TexturedBackgroundLight {
 CircleArena {
 }
 TinkerbotsBase {
-  translation 3.07884e-08 0.025048 0.008938
+  translation -2.61622e-07 0.0250765 0.108938
   rotation -0.9999480237976685 -0.010195102832450271 9.788448924858683e-05 0.0002868142950807308
   controller "controllernewtinkerbot"
   downSlot TinkerbotsCube {
@@ -78,7 +84,7 @@ TinkerbotsBase {
             slot TinkerbotsPivot {
               name "pivot_3"
               slot TinkerbotsGrabber {
-                rotation 0 0 1 1.7853996938995749
+                rotation 0 0 1 2.3089996938995747
                 fingerASlot TinkerbotsFinger {
                 }
                 fingerBSlot TinkerbotsFinger {
@@ -129,6 +135,25 @@ TinkerbotsBase {
     }
   }
   extensionSlot [
+    DistanceSensor {
+      translation -0.065 -0.0099997 -0.03
+      rotation 0 0 1 3.141592653589793
+      children [
+        Solid {
+          rotation 0 0 1 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Sphere {
+                radius 0.005
+              }
+            }
+          ]
+        }
+      ]
+      name "distance sensor_manipulator"
+    }
     DistanceSensor {
       translation 0.04 0 0.06
       rotation 0 1 0 -2.094399693899575

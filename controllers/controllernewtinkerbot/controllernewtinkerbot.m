@@ -52,7 +52,6 @@ wb_distance_sensor_enable(ds_right, TIME_STEP);
 ds_left = wb_robot_get_device('distance_left');
 wb_distance_sensor_enable(ds_left, TIME_STEP);
 
-
 ds_manipulator = wb_robot_get_device('distance sensor_manipulator');
 wb_distance_sensor_enable(ds_manipulator, TIME_STEP);
 

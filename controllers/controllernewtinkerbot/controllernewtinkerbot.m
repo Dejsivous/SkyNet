@@ -20,7 +20,6 @@ TIME_STEP = 64;
 speed = 3;
 distance = 90;
 finger_a = wb_robot_get_device('grabber finger A');
-<<<<<<< HEAD
 wb_motor_set_velocity(finger_a, 2);
 finger_b = wb_robot_get_device('grabber finger B');
 wb_motor_set_velocity(finger_b, 2);
@@ -31,18 +30,6 @@ wb_motor_set_velocity(finger_c, 2);
 %wb_motor_set_position(finger_a, 1);
 %wb_motor_set_position(finger_b, 1);
 %wb_motor_set_position(finger_c, 1);
-=======
-wb_motor_set_velocity(finger_a, 4);
-finger_b = wb_robot_get_device('grabber finger B');
-wb_motor_set_velocity(finger_b, 4);
-
-finger_c = wb_robot_get_device('grabber finger C');
-wb_motor_set_velocity(finger_c, 1);
-
-wb_motor_set_position(finger_a, 1);
-wb_motor_set_position(finger_b, 1);
-wb_motor_set_position(finger_c, 1);
->>>>>>> 7d4d16640e60b2c1de6805d697fc457f02a6bf68
 
 twister_1 = wb_robot_get_device('twister');
 %wb_motor_set_position(twister_1, 10);
@@ -56,11 +43,7 @@ pivot_2 = wb_robot_get_device('pivot_2');
 wb_motor_set_velocity(pivot_2, 1);
 
 pivot_3 = wb_robot_get_device('pivot_3');
-<<<<<<< HEAD
 %wb_motor_set_position(pivot_3, -1.5);
-=======
-wb_motor_set_position(pivot_3, -1.5);
->>>>>>> 7d4d16640e60b2c1de6805d697fc457f02a6bf68
 wb_motor_set_velocity(pivot_3, 1);
 
 wheel_left_front = wb_robot_get_device('wheel_left_front');
@@ -108,32 +91,6 @@ site = 0;
 brain = 0;
 position = 0;
 while wb_robot_step(TIME_STEP) ~= -1
-<<<<<<< HEAD
-=======
-
-ds_m = wb_distance_sensor_get_value(ds_manipulator);
-ds_r = wb_distance_sensor_get_value(ds_right);
-ds_l = wb_distance_sensor_get_value(ds_left);
-    %disp(ds_l);
-switch pick_up
-case 0
-if ds_m < 900 
-brain = 8
-wb_motor_set_position(finger_a, 0);
-wb_motor_set_position(finger_b, 0);
-wb_motor_set_position(finger_c, 0);
-
-wb_motor_set_position(pivot_3, 1.5);
-wb_motor_set_position(pivot_2, 1.5);
-
-wb_motor_set_velocity(pivot_2, 0.1);
-wb_motor_set_velocity(pivot_3, 0.1);
-pick_up = 1
-end
-case 1
-brain = 0
-end
->>>>>>> 7d4d16640e60b2c1de6805d697fc457f02a6bf68
 
 ds_m = wb_distance_sensor_get_value(ds_manipulator);
 ds_r = wb_distance_sensor_get_value(ds_right);

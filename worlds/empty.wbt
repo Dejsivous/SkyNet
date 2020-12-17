@@ -3,11 +3,11 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.9958114389651733 0.07689732099824463 0.049460894142784595 1.419818372946272
-  position 0.24003488307792042 3.3336107839599034 0.619249657961715
+  orientation -0.9907686866609041 0.11055840551109491 0.07844901849654609 1.426569084737978
+  position 0.10473139873151344 2.498764170650564 0.8732876427291842
 }
 WoodenBox {
-  translation -0.51 0.08 -0.71
+  translation -0.71 0.08 -0.52
   name "wooden box(4)"
   size 0.15 0.15 0.15
 }
@@ -36,7 +36,7 @@ WoodenBox {
   size 0.15 0.15 0.15
 }
 WoodenBox {
-  translation -0.22 0.08 0.63
+  translation -0.21 0.08 0.75
   name "wooden box(5)"
   size 0.15 0.15 0.15
 }
@@ -56,7 +56,7 @@ WoodenBox {
   size 0.15 0.15 0.15
 }
 WoodenBox {
-  translation 0.43 0.08 0.76
+  translation 0.25 0.08 0.76
   size 0.15 0.15 0.15
 }
 TexturedBackground {
